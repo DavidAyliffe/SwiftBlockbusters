@@ -1,0 +1,47 @@
+{
+  "": {
+    "swift-dependencies": "/Users/davidayliffe/Documents/SakilaApp/.build/arm64-apple-macosx/debug/NIOConcurrencyHelpers.build/master.swiftdeps"
+  },
+  "/Users/davidayliffe/Documents/SakilaApp/.build/checkouts/swift-nio/Sources/NIOConcurrencyHelpers/NIOAtomic.swift": {
+    "dependencies": "/Users/davidayliffe/Documents/SakilaApp/.build/arm64-apple-macosx/debug/NIOConcurrencyHelpers.build/NIOAtomic.d",
+    "object": "/Users/davidayliffe/Documents/SakilaApp/.build/arm64-apple-macosx/debug/NIOConcurrencyHelpers.build/NIOAtomic.swift.o",
+    "swiftmodule": "/Users/davidayliffe/Documents/SakilaApp/.build/arm64-apple-macosx/debug/NIOConcurrencyHelpers.build/NIOAtomic~partial.swiftmodule",
+    "swift-dependencies": "/Users/davidayliffe/Documents/SakilaApp/.build/arm64-apple-macosx/debug/NIOConcurrencyHelpers.build/NIOAtomic.swiftdeps",
+    "diagnostics": "/Users/davidayliffe/Documents/SakilaApp/.build/arm64-apple-macosx/debug/NIOConcurrencyHelpers.build/NIOAtomic.dia"
+  },
+  "/Users/davidayliffe/Documents/SakilaApp/.build/checkouts/swift-nio/Sources/NIOConcurrencyHelpers/NIOLock.swift": {
+    "dependencies": "/Users/davidayliffe/Documents/SakilaApp/.build/arm64-apple-macosx/debug/NIOConcurrencyHelpers.build/NIOLock.d",
+    "object": "/Users/davidayliffe/Documents/SakilaApp/.build/arm64-apple-macosx/debug/NIOConcurrencyHelpers.build/NIOLock.swift.o",
+    "swiftmodule": "/Users/davidayliffe/Documents/SakilaApp/.build/arm64-apple-macosx/debug/NIOConcurrencyHelpers.build/NIOLock~partial.swiftmodule",
+    "swift-dependencies": "/Users/davidayliffe/Documents/SakilaApp/.build/arm64-apple-macosx/debug/NIOConcurrencyHelpers.build/NIOLock.swiftdeps",
+    "diagnostics": "/Users/davidayliffe/Documents/SakilaApp/.build/arm64-apple-macosx/debug/NIOConcurrencyHelpers.build/NIOLock.dia"
+  },
+  "/Users/davidayliffe/Documents/SakilaApp/.build/checkouts/swift-nio/Sources/NIOConcurrencyHelpers/NIOLockedValueBox.swift": {
+    "dependencies": "/Users/davidayliffe/Documents/SakilaApp/.build/arm64-apple-macosx/debug/NIOConcurrencyHelpers.build/NIOLockedValueBox.d",
+    "object": "/Users/davidayliffe/Documents/SakilaApp/.build/arm64-apple-macosx/debug/NIOConcurrencyHelpers.build/NIOLockedValueBox.swift.o",
+    "swiftmodule": "/Users/davidayliffe/Documents/SakilaApp/.build/arm64-apple-macosx/debug/NIOConcurrencyHelpers.build/NIOLockedValueBox~partial.swiftmodule",
+    "swift-dependencies": "/Users/davidayliffe/Documents/SakilaApp/.build/arm64-apple-macosx/debug/NIOConcurrencyHelpers.build/NIOLockedValueBox.swiftdeps",
+    "diagnostics": "/Users/davidayliffe/Documents/SakilaApp/.build/arm64-apple-macosx/debug/NIOConcurrencyHelpers.build/NIOLockedValueBox.dia"
+  },
+  "/Users/davidayliffe/Documents/SakilaApp/.build/checkouts/swift-nio/Sources/NIOConcurrencyHelpers/NIOThreadPoolWorkAvailable.swift": {
+    "dependencies": "/Users/davidayliffe/Documents/SakilaApp/.build/arm64-apple-macosx/debug/NIOConcurrencyHelpers.build/NIOThreadPoolWorkAvailable.d",
+    "object": "/Users/davidayliffe/Documents/SakilaApp/.build/arm64-apple-macosx/debug/NIOConcurrencyHelpers.build/NIOThreadPoolWorkAvailable.swift.o",
+    "swiftmodule": "/Users/davidayliffe/Documents/SakilaApp/.build/arm64-apple-macosx/debug/NIOConcurrencyHelpers.build/NIOThreadPoolWorkAvailable~partial.swiftmodule",
+    "swift-dependencies": "/Users/davidayliffe/Documents/SakilaApp/.build/arm64-apple-macosx/debug/NIOConcurrencyHelpers.build/NIOThreadPoolWorkAvailable.swiftdeps",
+    "diagnostics": "/Users/davidayliffe/Documents/SakilaApp/.build/arm64-apple-macosx/debug/NIOConcurrencyHelpers.build/NIOThreadPoolWorkAvailable.dia"
+  },
+  "/Users/davidayliffe/Documents/SakilaApp/.build/checkouts/swift-nio/Sources/NIOConcurrencyHelpers/atomics.swift": {
+    "dependencies": "/Users/davidayliffe/Documents/SakilaApp/.build/arm64-apple-macosx/debug/NIOConcurrencyHelpers.build/atomics.d",
+    "object": "/Users/davidayliffe/Documents/SakilaApp/.build/arm64-apple-macosx/debug/NIOConcurrencyHelpers.build/atomics.swift.o",
+    "swiftmodule": "/Users/davidayliffe/Documents/SakilaApp/.build/arm64-apple-macosx/debug/NIOConcurrencyHelpers.build/atomics~partial.swiftmodule",
+    "swift-dependencies": "/Users/davidayliffe/Documents/SakilaApp/.build/arm64-apple-macosx/debug/NIOConcurrencyHelpers.build/atomics.swiftdeps",
+    "diagnostics": "/Users/davidayliffe/Documents/SakilaApp/.build/arm64-apple-macosx/debug/NIOConcurrencyHelpers.build/atomics.dia"
+  },
+  "/Users/davidayliffe/Documents/SakilaApp/.build/checkouts/swift-nio/Sources/NIOConcurrencyHelpers/lock.swift": {
+    "dependencies": "/Users/davidayliffe/Documents/SakilaApp/.build/arm64-apple-macosx/debug/NIOConcurrencyHelpers.build/lock.d",
+    "object": "/Users/davidayliffe/Documents/SakilaApp/.build/arm64-apple-macosx/debug/NIOConcurrencyHelpers.build/lock.swift.o",
+    "swiftmodule": "/Users/davidayliffe/Documents/SakilaApp/.build/arm64-apple-macosx/debug/NIOConcurrencyHelpers.build/lock~partial.swiftmodule",
+    "swift-dependencies": "/Users/davidayliffe/Documents/SakilaApp/.build/arm64-apple-macosx/debug/NIOConcurrencyHelpers.build/lock.swiftdeps",
+    "diagnostics": "/Users/davidayliffe/Documents/SakilaApp/.build/arm64-apple-macosx/debug/NIOConcurrencyHelpers.build/lock.dia"
+  }
+}

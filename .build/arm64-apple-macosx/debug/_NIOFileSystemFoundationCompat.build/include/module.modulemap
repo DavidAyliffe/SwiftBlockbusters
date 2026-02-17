@@ -1,0 +1,3 @@
+module _NIOFileSystemFoundationCompat {
+    header "/Users/davidayliffe/Documents/SakilaApp/.build/arm64-apple-macosx/debug/_NIOFileSystemFoundationCompat.build/include/_NIOFileSystemFoundationCompat-Swift.h"
+}
