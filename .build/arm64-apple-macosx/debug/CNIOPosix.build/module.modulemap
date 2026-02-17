@@ -1,4 +1,0 @@
-module CNIOPosix {
-    umbrella header "/Users/davidayliffe/Documents/SakilaApp/.build/checkouts/swift-nio/Sources/CNIOPosix/include/CNIOPosix.h"
-    export *
-}

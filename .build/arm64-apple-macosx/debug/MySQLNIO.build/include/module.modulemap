@@ -1,3 +1,0 @@
-module MySQLNIO {
-    header "/Users/davidayliffe/Documents/SakilaApp/.build/arm64-apple-macosx/debug/MySQLNIO.build/include/MySQLNIO-Swift.h"
-}
