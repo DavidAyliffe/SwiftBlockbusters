@@ -1,4 +1,4 @@
-# Sakila Manager
+# Swift Blockbusters Manager
 
 A macOS desktop app built with SwiftUI that connects to a local MySQL Sakila database for browsing films, managing customers and staff, processing rentals, and viewing dashboard statistics.
 
