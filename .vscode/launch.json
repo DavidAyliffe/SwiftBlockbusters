@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:SwiftBlockbusters}",
+            "name": "Debug SakilaApp",
+            "target": "SakilaApp",
+            "configuration": "debug",
+            "preLaunchTask": "swift: Build Debug SakilaApp"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:SwiftBlockbusters}",
+            "name": "Release SakilaApp",
+            "target": "SakilaApp",
+            "configuration": "release",
+            "preLaunchTask": "swift: Build Release SakilaApp"
+        }
+    ]
+}

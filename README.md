@@ -1,68 +1,145 @@
-# Swift Blockbusters Manager
+# 🎬 Swift Blockbusters Manager
 
-A macOS desktop app built with SwiftUI that connects to a local MySQL Sakila database for browsing films, managing customers and staff, processing rentals, and viewing dashboard statistics.
+A native macOS desktop app built with SwiftUI that connects directly to a local MySQL [Sakila](https://dev.mysql.com/doc/sakila/en/) database. Browse your film catalogue, manage customers and staff, process rentals and returns, and monitor store statistics — all from a clean, sidebar-driven Mac interface.
 
-## Requirements
+---
 
-- macOS 14+
-- Xcode 15+
-- MySQL server with the [Sakila sample database](https://dev.mysql.com/doc/sakila/en/) installed
+## ✨ Features
 
-## Getting Started
+### 📊 Dashboard
+- At-a-glance overview cards: total films, customers, staff, active rentals, overdue count, and revenue
+- Top 5 most-rented films
+- Recent rentals feed
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/DavidAyliffe/SakilaApp.git
-   ```
+### 🎥 Films
+- Searchable, filterable film catalogue (filter by category and/or MPAA rating)
+- Detail view with description, full cast, categories, rental/replacement cost, and per-store inventory levels
 
-2. Open in Xcode:
-   ```bash
-   open SakilaApp/
-   ```
+### 👥 Customers
+- Browse and search the full customer list
+- Add, edit, and delete customers with a guided form
 
-3. Build and run (Cmd+R)
+### 🧑‍💼 Staff
+- View all staff members across stores
+- Add, edit, and delete staff records
 
-4. Configure your database connection via the toolbar connection icon or the Settings menu:
-   - Host: `127.0.0.1`
-   - Port: `3306`
-   - Username: `root`
-   - Password: *(your password)*
-   - Database: `sakila`
+### 📼 Rentals
+- View all active rentals and flag overdue items
+- Process returns in one click
+- Create new rentals with a step-by-step customer → film → inventory selection flow
 
-## Features
+### ⚙️ Settings
+- Persistent database connection configuration (host, port, username, password, database name)
+- Connect / disconnect controls with live status indicator
 
-- **Dashboard** — Overview cards (total films, customers, staff, active rentals, overdue count, revenue) with top 5 rented films and recent rentals
-- **Films** — Searchable and filterable list by category and rating, with detail view showing description, cast, categories, and per-store inventory
-- **Customers** — Browse, search, add, edit, and delete customers
-- **Staff** — Browse, add, edit, and delete staff members
-- **Rentals** — View active rentals, process returns, and create new rentals with a guided customer/film/inventory selection flow
+---
 
-## Architecture
+## 🖥️ Requirements
 
-- **Platform**: macOS 14+ SwiftUI (NavigationSplitView sidebar layout)
-- **Pattern**: MVVM
-- **MySQL Driver**: [mysql-nio](https://github.com/vapor/mysql-nio) (Vapor's pure-Swift async MySQL driver)
-- **Package Manager**: Swift Package Manager
+| Requirement | Version |
+|---|---|
+| macOS | 14 Sonoma or later |
+| Xcode | 15 or later |
+| MySQL | 8.0+ with the Sakila sample database |
 
-## Project Structure
+> 📥 **Sakila database**: [https://dev.mysql.com/doc/sakila/en/](https://dev.mysql.com/doc/sakila/en/)
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/DavidAyliffe/SakilaApp.git
+cd SakilaApp
+```
+
+### 2. Open in Xcode
+
+```bash
+open SakilaApp/
+```
+
+Or open the folder directly in Xcode via **File → Open…**
+
+### 3. Build and run
+
+Press **⌘R** (or **Product → Run**) to build and launch the app.
+
+### 4. Configure your database connection
+
+On first launch, click the 🔌 connection icon in the toolbar or go to **Settings** and enter:
+
+| Field | Default value |
+|---|---|
+| Host | `127.0.0.1` |
+| Port | `3306` |
+| Username | `root` |
+| Password | *(your MySQL root password)* |
+| Database | `sakila` |
+
+Click **Connect** — the status indicator will turn green when the connection is established.
+
+---
+
+## 🏗️ Architecture
+
+| Layer | Technology |
+|---|---|
+| **UI** | SwiftUI — `NavigationSplitView` sidebar layout |
+| **Pattern** | MVVM (`@Observable` view models) |
+| **Database driver** | [mysql-nio](https://github.com/vapor/mysql-nio) — Vapor's pure-Swift async MySQL driver |
+| **Package manager** | Swift Package Manager |
+| **Concurrency** | Swift structured concurrency (`async`/`await`) |
+
+---
+
+## 📁 Project Structure
 
 ```
 Sources/SakilaApp/
-├── SakilaApp.swift              # App entry point
-├── Models/                      # Identifiable structs matching Sakila schema
+│
+├── SakilaApp.swift                  # 🚀 App entry point & window configuration
+│
+├── Models/                          # 📦 Identifiable value types (Sakila schema)
+│   ├── Actor.swift
+│   ├── Category.swift
+│   ├── Customer.swift
+│   ├── DashboardStats.swift
+│   ├── Film.swift
+│   ├── Rental.swift
+│   └── Staff.swift
+│
 ├── Services/
-│   └── DatabaseService.swift    # MySQL connection and all queries
-├── ViewModels/                  # @Observable classes per feature area
+│   └── DatabaseService.swift        # 🗄️ MySQL connection pool & all query methods
+│
+├── ViewModels/                      # 🧠 @Observable state & business logic
+│   ├── CustomerViewModel.swift
+│   ├── DashboardViewModel.swift
+│   ├── FilmViewModel.swift
+│   ├── RentalViewModel.swift
+│   └── StaffViewModel.swift
+│
 └── Views/
-    ├── ContentView.swift        # Sidebar navigation
-    ├── SettingsView.swift       # DB connection config
-    ├── DashboardView.swift      # Stats and lists
-    ├── Films/                   # Film list and detail
-    ├── Customers/               # Customer list and form
-    ├── Staff/                   # Staff list and form
-    └── Rentals/                 # Rental management
+    ├── ContentView.swift            # 🗂️ Root sidebar navigation
+    ├── SettingsView.swift           # ⚙️ DB connection settings
+    ├── DashboardView.swift          # 📊 Stats dashboard
+    ├── Films/
+    │   ├── FilmListView.swift       # 🎥 Searchable film catalogue
+    │   └── FilmDetailView.swift     # 🎞️ Film detail & inventory
+    ├── Customers/
+    │   ├── CustomerListView.swift   # 👥 Customer browser
+    │   └── CustomerFormView.swift   # ✏️ Add / edit customer
+    ├── Staff/
+    │   ├── StaffListView.swift      # 🧑‍💼 Staff browser
+    │   └── StaffFormView.swift      # ✏️ Add / edit staff
+    └── Rentals/
+        └── RentalView.swift         # 📼 Rental management
 ```
 
-## License
+---
 
-MIT
+## 📄 License
+
+MIT — see [LICENSE](LICENSE) for details.
