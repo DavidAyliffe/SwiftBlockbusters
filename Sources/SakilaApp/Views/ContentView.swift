@@ -1,5 +1,12 @@
+// ContentView.swift
+// The root view of the application, providing the main navigation structure.
+// Uses a NavigationSplitView with a sidebar for section navigation
+// and a detail area that displays the selected section's content.
+
 import SwiftUI
 
+/// Enum defining all available sidebar navigation items.
+/// Each case maps to a top-level section of the application.
 enum SidebarItem: String, CaseIterable, Identifiable {
     case dashboard = "Dashboard"
     case films = "Films"
@@ -7,8 +14,10 @@ enum SidebarItem: String, CaseIterable, Identifiable {
     case staff = "Staff"
     case rentals = "Rentals"
 
+    /// Uses the raw string value as the unique identifier for SwiftUI lists
     var id: String { rawValue }
 
+    /// SF Symbol icon name for each sidebar item
     var icon: String {
         switch self {
         case .dashboard: return "chart.bar.fill"
@@ -20,13 +29,20 @@ enum SidebarItem: String, CaseIterable, Identifiable {
     }
 }
 
+/// The main content view that provides the app's navigation structure.
+/// Displays a sidebar with section links and a detail area with the selected section's content.
+/// Shows a connection prompt when the database is not connected.
 struct ContentView: View {
+    /// Database service injected from the SwiftUI environment
     @Environment(DatabaseService.self) private var db
+    /// The currently selected sidebar item (defaults to Dashboard)
     @State private var selectedItem: SidebarItem? = .dashboard
+    /// Controls the visibility of the settings/connection sheet
     @State private var showingSettings = false
 
     var body: some View {
         NavigationSplitView {
+            // Sidebar: list of navigable sections
             List(SidebarItem.allCases, selection: $selectedItem) { item in
                 Label(item.rawValue, systemImage: item.icon)
                     .tag(item)
@@ -34,6 +50,7 @@ struct ContentView: View {
             .navigationSplitViewColumnWidth(min: 180, ideal: 200)
             .navigationTitle("Sakila Manager")
             .toolbar {
+                // Connection status indicator — shows green bolt when connected, red when not
                 ToolbarItem {
                     Button {
                         showingSettings = true
@@ -45,6 +62,7 @@ struct ContentView: View {
                 }
             }
         } detail: {
+            // Detail area: show the selected section's view when connected
             if db.isConnected {
                 switch selectedItem {
                 case .dashboard:
@@ -62,6 +80,7 @@ struct ContentView: View {
                         .foregroundStyle(.secondary)
                 }
             } else {
+                // Disconnected state: prompt the user to configure the database connection
                 VStack(spacing: 16) {
                     Image(systemName: "server.rack")
                         .font(.system(size: 48))
@@ -77,6 +96,7 @@ struct ContentView: View {
                 }
             }
         }
+        // Settings sheet for database connection configuration
         .sheet(isPresented: $showingSettings) {
             SettingsView()
                 .environment(db)

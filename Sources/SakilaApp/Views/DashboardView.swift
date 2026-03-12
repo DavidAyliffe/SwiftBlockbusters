@@ -1,12 +1,21 @@
+// DashboardView.swift
+// The main dashboard screen displaying key business metrics at a glance.
+// Shows stat cards (films, customers, staff, rentals, revenue),
+// a top 5 rented films leaderboard, and a recent rentals activity feed.
+
 import SwiftUI
 
+/// Dashboard view that presents an overview of the rental business.
+/// Loads statistics on appear and provides a manual refresh button.
 struct DashboardView: View {
+    /// ViewModel managing the dashboard data and loading state
     @State private var viewModel = DashboardViewModel()
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                // Stats cards
+                // MARK: - Statistics Cards Grid
+                // 3-column grid displaying key business metrics
                 LazyVGrid(columns: [
                     GridItem(.flexible()),
                     GridItem(.flexible()),
@@ -20,8 +29,9 @@ struct DashboardView: View {
                     StatCard(title: "Total Revenue", value: "$\(viewModel.stats.totalRevenue)", icon: "dollarsign.circle.fill", color: .mint)
                 }
 
+                // MARK: - Detail Panels (Top Films & Recent Rentals)
                 HStack(alignment: .top, spacing: 20) {
-                    // Top rented films
+                    // Top 5 most-rented films leaderboard
                     GroupBox("Top 5 Rented Films") {
                         if viewModel.stats.topFilms.isEmpty {
                             Text("No data")
@@ -30,6 +40,7 @@ struct DashboardView: View {
                                 .padding()
                         } else {
                             VStack(alignment: .leading, spacing: 8) {
+                                // Display each film with its rank number and rental count
                                 ForEach(Array(viewModel.stats.topFilms.enumerated()), id: \.element.id) { index, film in
                                     HStack {
                                         Text("\(index + 1).")
@@ -42,6 +53,7 @@ struct DashboardView: View {
                                             .foregroundStyle(.secondary)
                                             .font(.caption)
                                     }
+                                    // Add dividers between items (but not after the last one)
                                     if index < viewModel.stats.topFilms.count - 1 {
                                         Divider()
                                     }
@@ -52,7 +64,7 @@ struct DashboardView: View {
                     }
                     .frame(maxWidth: .infinity)
 
-                    // Recent rentals
+                    // Recent rental activity feed
                     GroupBox("Recent Rentals") {
                         if viewModel.stats.recentRentals.isEmpty {
                             Text("No data")
@@ -63,6 +75,7 @@ struct DashboardView: View {
                             VStack(alignment: .leading, spacing: 8) {
                                 ForEach(viewModel.stats.recentRentals) { rental in
                                     HStack {
+                                        // Film title and customer name
                                         VStack(alignment: .leading) {
                                             Text(rental.filmTitle ?? "Unknown")
                                                 .lineLimit(1)
@@ -71,6 +84,7 @@ struct DashboardView: View {
                                                 .foregroundStyle(.secondary)
                                         }
                                         Spacer()
+                                        // Rental date and active status badge
                                         VStack(alignment: .trailing) {
                                             Text(rental.rentalDate, style: .date)
                                                 .font(.caption)
@@ -84,6 +98,7 @@ struct DashboardView: View {
                                             }
                                         }
                                     }
+                                    // Add dividers between items
                                     if rental.id != viewModel.stats.recentRentals.last?.id {
                                         Divider()
                                     }
@@ -99,6 +114,7 @@ struct DashboardView: View {
         }
         .navigationTitle("Dashboard")
         .toolbar {
+            // Manual refresh button
             ToolbarItem {
                 Button {
                     Task { await viewModel.loadStats() }
@@ -108,11 +124,13 @@ struct DashboardView: View {
                 .help("Refresh")
             }
         }
+        // Loading spinner overlay
         .overlay {
             if viewModel.isLoading {
                 ProgressView()
             }
         }
+        // Error alert dialog
         .alert("Error", isPresented: .init(
             get: { viewModel.errorMessage != nil },
             set: { if !$0 { viewModel.errorMessage = nil } }
@@ -121,16 +139,23 @@ struct DashboardView: View {
         } message: {
             Text(viewModel.errorMessage ?? "")
         }
+        // Load stats when the view first appears
         .task {
             await viewModel.loadStats()
         }
     }
 }
 
+/// A reusable card component that displays a single statistic with an icon.
+/// Used in the dashboard grid to show metrics like total films, revenue, etc.
 struct StatCard: View {
+    /// Label displayed below the value (e.g., "Total Films")
     let title: String
+    /// The metric value to display prominently (e.g., "1000")
     let value: String
+    /// SF Symbol name for the card's icon
     let icon: String
+    /// Accent color for the icon
     let color: Color
 
     var body: some View {
